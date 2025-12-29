@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import bcrypt from "bcrypt";
-import { authSchema } from "@/lib/validators/auth";
+import { registerSchema } from "@/lib/validators/register";
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
 
     // Validate using safeParse
-    const parseResult = authSchema.safeParse(body);
+    const parseResult = registerSchema.safeParse(body);
 
     if (!parseResult.success) {
       // Validation failed, extract errors

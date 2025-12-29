@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import { getDataFromToken } from "@/helpers/getDataFromToken";
-import { mealSchema } from "@/lib/validators/auth";
+import { mealSchema } from "@/lib/validators/meal";
 
 export async function POST(req: NextRequest) {
   try {
