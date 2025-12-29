@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { authSchema } from "@/lib/validators/auth";
 
@@ -42,12 +42,11 @@ export async function POST(req: NextRequest) {
     };
 
     const token = jwt.sign(tokenData, process.env.TOKEN_SECRET!, {
-      expiresIn: "1d",
+      expiresIn: "7d",
     });
 
     const response = NextResponse.json({
       message: `${user.username} login successful`,
-      token,
       username: user.username,
       email: user.email,
     });
