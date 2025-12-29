@@ -2,39 +2,52 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { authType } from "@/types/type";
+import { authSchema } from "@/lib/validators/auth";
+
 export async function POST(req: NextRequest) {
   try {
-    const { email, password }: authType = await req.json();
+    const body = await req.json();
 
-    const user = await prisma.user.findUnique({
-      where: {
-        email,
-      },
-    });
-    if (!user) {
+    const parseResult = authSchema.safeParse(body);
+
+    if (!parseResult.success) {
+      // Validation failed, extract errors
       return NextResponse.json(
-        { error: "User dose not exist" },
+        { errors: parseResult.error.issues },
         { status: 400 }
       );
     }
 
-    const validPassword = bcrypt.compare(password, user.password);
+    const { email, password } = parseResult.data;
+
+    const user = await prisma.user.findUnique({
+      where: { email },
+    });
+
+    if (!user) {
+      return NextResponse.json(
+        { message: "No user found with that email." },
+        { status: 404 }
+      );
+    }
+
+    const validPassword = await bcrypt.compare(password, user.password);
+
     if (!validPassword) {
-      return NextResponse.json({ error: "Invalid passsword" }, { status: 400 });
+      return NextResponse.json({ error: "Invalid password" }, { status: 400 });
     }
 
     const tokenData = {
       id: user.id,
     };
 
-    const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!, {
+    const token = jwt.sign(tokenData, process.env.TOKEN_SECRET!, {
       expiresIn: "1d",
     });
 
     const response = NextResponse.json({
-      message: `${user.username} Login successful`,
-      token: token,
+      message: `${user.username} login successful`,
+      token,
       username: user.username,
       email: user.email,
     });

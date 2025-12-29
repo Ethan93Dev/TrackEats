@@ -1,14 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/db";
 import bcrypt from "bcrypt";
-import { z } from "zod";
-
-// Define Zod schema for validation
-const authSchema = z.object({
-  username: z.string().min(1, "Username is required"),
-  email: z.string().email("Invalid email"),
-  password: z.string().min(6, "Password must be at least 6 characters"),
-});
+import { authSchema } from "@/lib/validators/auth";
 
 export async function POST(req: NextRequest) {
   try {
