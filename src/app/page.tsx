@@ -2,8 +2,11 @@ import LandingPage from "./landingPage/page";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <LandingPage />
+    // Removed items-center/justify-center so content flows from the top
+    <div className="min-h-screen">
+      <main>
+        <LandingPage />
+      </main>
     </div>
   );
 }
