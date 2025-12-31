@@ -12,7 +12,6 @@ model User {
   username  String
   email     String   @unique
   password  String
-  dailyGoal Int      @default(2000)
   createdAt DateTime @default(now())
   meals     Meal[]
 }
