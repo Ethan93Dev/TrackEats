@@ -1,36 +1,59 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+🥗 CalorieFlow
+A high-performance, minimalist nutrition tracker built with Next.js.
 
-## Getting Started
+CalorieFlow strips away the clutter of traditional fitness apps, providing an editorial-style interface for tracking daily intake and weekly trends. Built for speed and visual clarity.
 
-First, run the development server:
+✨ Features
+Editorial Interface: A "no-background" design focusing on bold typography and whitespace.
 
-```bash
+Real-time Analytics: Dynamic 7-day activity chart using Recharts.
+
+Intuitive Logging: High-contrast, minimalist input forms for rapid entry.
+
+Contextual Feedback: Adaptive color states (Rose for over-goal, Indigo for under-goal).
+
+Hydration Guarded: Robust render logic to prevent hydration mismatches and cascading render errors.
+
+🚀 Tech Stack
+Framework: Next.js 15 (App Router)
+
+Styling: Tailwind CSS
+
+Visualization: Recharts
+
+Icons: Lucide React
+
+HTTP Client: Axios
+
+🛠️ Getting Started
+1. Clone the repository
+Bash
+
+git clone https://github.com/your-username/calorie-flow.git
+cd calorie-flow
+2. Install dependencies
+Bash
+
+npm install
+# or
+yarn install
+3. Setup Environment Variables
+Create a .env.local file in the root directory and add your API endpoints:
+
+Code snippet
+
+NEXT_PUBLIC_API_URL=your_api_gateway_url
+4. Run the development server
+Bash
+
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Open http://localhost:3000 with your browser to see the result.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+📊 Data Architecture
+The app uses a Derived State pattern to ensure high performance and zero "cascading render" errors.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Raw Data: Fetched via Axios from the /api/meal/getMeals endpoint.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Normalization: Meals are grouped by date-string using useMemo to prevent unnecessary recalculations.
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Hydration: Recharts components are guarded by a mounted state to ensure stable client-side rendering.
