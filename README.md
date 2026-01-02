@@ -1,21 +1,25 @@
 🥗 TrackEats
 A high-performance, minimalist nutrition tracker built with Next.js.
 
-CalorieFlow strips away the clutter of traditional fitness apps, providing an editorial-style interface for tracking daily intake and weekly trends. Built for speed and visual clarity.
+TrackEats strips away the clutter of traditional fitness apps, providing a sleek, editorial-style interface for monitoring daily intake and weekly trends. Built for speed, typography, and visual clarity.
+
+🌐 View Live Demo
 
 ✨ Features
-Editorial Interface: A "no-background" design focusing on bold typography and whitespace.
+Editorial Interface: A "no-background" design that prioritizes whitespace and bold typography over heavy cards and borders.
 
-Real-time Analytics: Dynamic 7-day activity chart using Recharts.
+Real-time Analytics: Dynamic 7-day activity tracking powered by Recharts.
 
-Intuitive Logging: High-contrast, minimalist input forms for rapid entry.
+Minimalist Logging: High-contrast, rapid-entry forms designed for the modern web.
 
-Contextual Feedback: Adaptive color states (Rose for over-goal, Indigo for under-goal).
+Contextual Feedback: Visual cues through adaptive color states (Rose for exceeding goals, Indigo for staying on track).
 
-Hydration Guarded: Robust render logic to prevent hydration mismatches and cascading render errors.
+Stability First: Built with robust hydration guards to eliminate cascading render errors and hydration mismatches.
 
 🚀 Tech Stack
 Framework: Next.js 15 (App Router)
+
+Deployment: Vercel
 
 Styling: Tailwind CSS
 
@@ -26,43 +30,28 @@ Icons: Lucide React
 HTTP Client: Axios
 
 🛠️ Getting Started
-1. Clone the repository
+TrackEats is designed to work immediately without complex configuration.
+
+1. Clone & Enter
+
 Bash
-
-git clone https://github.com/your-username/calorie-flow.git
-cd calorie-flow
-2. Install dependencies
-Bash
-
-npm install
-# or
-yarn install
-3. Setup Environment Variables
-Create a .env.local file in the root directory and add your API endpoints:
-
-Code snippet
-
-NEXT_PUBLIC_API_URL=your_api_gateway_url
-4. Run the development server
-Bash
-
-npm run dev
-Open http://localhost:3000 with your browser to see the result.
-
-📊 Data Architecture
-The app uses a Derived State pattern to ensure high performance and zero "cascading render" errors.
-
-Raw Data: Fetched via Axios from the /api/meal/getMeals endpoint.
-
-Normalization: Meals are grouped by date-string using useMemo to prevent unnecessary recalculations.
-
-Hydration: Recharts components are guarded by a mounted state to ensure stable client-side rendering.
-
 git clone https://github.com/Ethan93Dev/TrackEats.git
 cd TrackEats
-npm install
-npm run dev
+2. Install Dependencies
 
-Open http://localhost:3000 – works out of the box. No .env needed.
-📊 How it Works
-Meals are fetched from /api/meals, grouped by day with useMemo to avoid re-calculations, and plotted in a simple Recharts line chart. Client-side state stays stable, no cascading re-renders.
+Bash
+npm install
+3. Launch Development Server
+
+Bash
+npm run dev
+Visit http://localhost:3000 to start tracking locally.
+
+📊 Data Architecture
+TrackEats utilizes a Derived State pattern to ensure the UI remains snappy even as your meal history grows.
+
+Fetch: Raw meal data is pulled via Axios from the internal API.
+
+Transform: Using useMemo, data is grouped by date-string and reduced into daily totals. This prevents expensive re-calculations on every keystroke.
+
+Render: Charts are wrapped in a hydration guard (mounted state) to ensure perfect synchronization between the server and client-side visualization.
