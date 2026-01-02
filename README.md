@@ -1,4 +1,4 @@
-🥗 CalorieFlow
+🥗 TrackEats
 A high-performance, minimalist nutrition tracker built with Next.js.
 
 CalorieFlow strips away the clutter of traditional fitness apps, providing an editorial-style interface for tracking daily intake and weekly trends. Built for speed and visual clarity.
