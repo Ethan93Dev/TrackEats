@@ -3,7 +3,7 @@ A high-performance, minimalist nutrition tracker built with Next.js.
 
 TrackEats strips away the clutter of traditional fitness apps, providing a sleek, editorial-style interface for monitoring daily intake and weekly trends. Built for speed, typography, and visual clarity.
 
-🌐 View Live Demo
+🚀 View Live Demo
 
 ✨ Features
 Editorial Interface: A "no-background" design that prioritizes whitespace and bold typography over heavy cards and borders.
@@ -14,7 +14,7 @@ Minimalist Logging: High-contrast, rapid-entry forms designed for the modern web
 
 Contextual Feedback: Visual cues through adaptive color states (Rose for exceeding goals, Indigo for staying on track).
 
-Stability First: Built with robust hydration guards to eliminate cascading render errors and hydration mismatches.
+Stability First: Built with robust hydration guards to eliminate cascading render errors.
 
 🚀 Tech Stack
 Framework: Next.js 15 (App Router)
@@ -45,13 +45,11 @@ npm install
 
 Bash
 npm run dev
-Visit http://localhost:3000 to start tracking locally.
-
 📊 Data Architecture
-TrackEats utilizes a Derived State pattern to ensure the UI remains snappy even as your meal history grows.
+TrackEats utilizes a Derived State pattern to ensure the UI remains snappy.
 
 Fetch: Raw meal data is pulled via Axios from the internal API.
 
-Transform: Using useMemo, data is grouped by date-string and reduced into daily totals. This prevents expensive re-calculations on every keystroke.
+Transform: Using useMemo, data is grouped by date-string and reduced into daily totals. This prevents expensive re-calculations.
 
 Render: Charts are wrapped in a hydration guard (mounted state) to ensure perfect synchronization between the server and client-side visualization.
