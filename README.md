@@ -4,6 +4,7 @@ A high-performance, minimalist nutrition tracker built with Next.js.
 TrackEats strips away the clutter of traditional fitness apps, providing a sleek, editorial-style interface for monitoring daily intake and weekly trends. Built for speed, typography, and visual clarity.
 
 🚀 View Live Demo
+https://trackeats-f5m78aosc-ethan93devs-projects.vercel.app/
 
 ✨ Features
 Editorial Interface: A "no-background" design that prioritizes whitespace and bold typography over heavy cards and borders.
