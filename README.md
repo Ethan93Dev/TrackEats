@@ -57,3 +57,12 @@ Raw Data: Fetched via Axios from the /api/meal/getMeals endpoint.
 Normalization: Meals are grouped by date-string using useMemo to prevent unnecessary recalculations.
 
 Hydration: Recharts components are guarded by a mounted state to ensure stable client-side rendering.
+
+git clone https://github.com/Ethan93Dev/TrackEats.git
+cd TrackEats
+npm install
+npm run dev
+
+Open http://localhost:3000 – works out of the box. No .env needed.
+📊 How it Works
+Meals are fetched from /api/meals, grouped by day with useMemo to avoid re-calculations, and plotted in a simple Recharts line chart. Client-side state stays stable, no cascading re-renders.
